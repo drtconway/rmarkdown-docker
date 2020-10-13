@@ -1,0 +1,24 @@
+---
+title: "My Brilliant RMarkdown"
+author: "Thomas Conway"
+output:
+    html_document:
+        toc: TRUE
+---
+
+```{r echo=FALSE}
+library(ggplot2)
+```
+
+## A Heading
+
+```{r}
+x <- data.frame(x=seq(0, 1, 0.001))
+x$p <- pgamma(x$x, 0.2, 1)
+x$q <- pbeta(x$x, 2, 10)
+ggplot(x, aes(x, p, color="gamma")) +
+    geom_line() +
+    geom_line(aes(x, q, color="beta")) +
+    theme_minimal() +
+    labs(x="base probability", y="cumulative probability", color="distribution")
+```
